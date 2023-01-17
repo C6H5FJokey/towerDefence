@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Towers/BaseTower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Towers/GunTower.gd" type="Script" id=2]
+[ext_resource path="res://assets/TowerDefense/Tower/Turrent/towerDefense_tile297.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fire"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bearing/Tower/GunFire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bearing/Tower/GunFire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[node name="GunTower" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Tower" parent="Bearing" index="0"]
+position = Vector2( 12, 0 )
+
+[node name="GunFire" type="Sprite" parent="Bearing/Tower" index="0"]
+visible = false
+show_behind_parent = true
+position = Vector2( 40, 0 )
+scale = Vector2( 0.7, 0.7 )
+z_index = 1
+texture = ExtResource( 3 )
+
+[node name="FireCD" parent="." index="2"]
+wait_time = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+anims/Fire = SubResource( 1 )
+anims/RESET = SubResource( 2 )

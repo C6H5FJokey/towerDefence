@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/TowerDefense/Tower/Turrent/towerDefense_tile249.png" type="Texture" id=1]
+[ext_resource path="res://UI/Towers/BaseTower.tscn" type="PackedScene" id=4]
+
+[node name="GunTower" instance=ExtResource( 4 )]
+script = null
+
+[node name="Turrent" parent="." index="0"]
+texture = ExtResource( 1 )

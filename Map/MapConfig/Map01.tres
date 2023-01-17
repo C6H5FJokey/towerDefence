@@ -1,0 +1,45 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Map/MapConfig/MapConfig.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+wave_set = [ {
+"enemies": [ {
+"name": "BlueTank",
+"path_ind": 0,
+"wait_time": 0.5
+}, {
+"name": "BlueTank",
+"path_ind": 0,
+"wait_time": 0.5
+}, {
+"name": "BlueTank",
+"path_ind": 0,
+"wait_time": 0.5
+}, {
+"name": "BlueTank",
+"path_ind": 0,
+"wait_time": 0.5
+} ],
+"fund": 0
+}, {
+"enemies": [ {
+"name": "BlueTank",
+"path_ind": 0,
+"wait_time": 0.5
+}, {
+"name": "BlueTank",
+"path_ind": 0,
+"wait_time": 0.5
+}, {
+"name": "BlueTank",
+"path_ind": 1,
+"wait_time": 0.5
+}, {
+"name": "BlueTank",
+"path_ind": 1,
+"wait_time": 0.5
+} ],
+"fund": 200
+} ]

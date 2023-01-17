@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/TowerDefense/Tower/Turrent/towerDefense_tile249.png" type="Texture" id=1]
+[ext_resource path="res://assets/TowerDefense/Tower/Base/towerDefense_tile183.png" type="Texture" id=2]
+[ext_resource path="res://Towers/BaseTower.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 300.0
+
+[node name="BaseTower" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Base" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Bearing" type="Position2D" parent="."]
+
+[node name="Tower" type="Sprite" parent="Bearing"]
+texture = ExtResource( 1 )
+
+[node name="FireCD" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
