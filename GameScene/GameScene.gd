@@ -52,8 +52,12 @@ func _ready():
 	#初始化显示ui
 	HUD.set_fund(fund)
 	HUD.set_hp(health)
+	HUD.set_wave(0)
+	HUD.set_max_wave(map.wave_data.size())
 	connect("hp_changed", HUD, "set_hp")
 	connect("fund_changed", HUD, "set_fund")
+	get_tree().paused = true
+	yield(HUD, "pause_button_down")
 	next_wave()
 	
 
@@ -147,6 +151,7 @@ func next_wave():
 		emit_signal("waves_cleared")
 		return
 	set_fund(fund + map.wave_data[_current_wave].fund)
+	HUD.set_wave(_current_wave + 1)
 	for enemy in map.wave_data[_current_wave].enemies:
 		enemy_enter_map(enemy.name, enemy.path_ind)
 		wait_timer.start(enemy.wait_time)
