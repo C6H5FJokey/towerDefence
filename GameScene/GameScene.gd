@@ -8,6 +8,7 @@ signal fund_changed(value)
 signal wave_finished
 signal waves_cleared
 
+
 export(PoolStringArray) var tower_type: PoolStringArray
 export(int) var fund := 0 setget set_fund
 export(int) var max_health := 20 setget set_max_hp
@@ -28,6 +29,7 @@ onready var enemy_nodes = $Enemies
 onready var HUD = $UI/HUD
 onready var tower_selector = $TowerSelector
 onready var wait_timer = $WaitTimer
+onready var menu = $UI/Menu
 
 
 func _ready():
@@ -50,6 +52,7 @@ func _ready():
 		tower_selector.slot_connect(
 			i, "pressed", self, "verify_and_build", [])
 	#初始化显示ui
+	menu.hide()
 	HUD.set_fund(fund)
 	HUD.set_hp(health)
 	HUD.set_wave(0)
@@ -57,8 +60,8 @@ func _ready():
 	connect("hp_changed", HUD, "set_hp")
 	connect("fund_changed", HUD, "set_fund")
 	get_tree().paused = true
-	yield(HUD, "pause_button_down")
-	next_wave()
+	if yield(HUD, "pause_toggled"):
+		next_wave()
 	
 
 
@@ -164,3 +167,17 @@ func _on_GameScene_wave_finished():
 	wait_timer.start(5)
 	yield(wait_timer, "timeout")
 	next_wave()
+
+
+func _on_HUD_menu_pressed():
+	HUD.hide()
+	tower_selector.hide()
+	menu.show()
+
+
+func _on_Menu_menu_hide():
+	GameManager.update_pause()
+	HUD.show()
+	if _build_mode:
+		tower_selector.show()
+

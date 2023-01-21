@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pause.png-9e16193837b827707592181767f7901e.stex"
+path="res://.import/gear.png-0214245225eef41c0e3f478fb3610b37.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/GameIcon/pause.png"
-dest_files=[ "res://.import/pause.png-9e16193837b827707592181767f7901e.stex" ]
+source_file="res://assets/UI/GameIcon/gear.png"
+dest_files=[ "res://.import/gear.png-0214245225eef41c0e3f478fb3610b37.stex" ]
 
 [params]
 
